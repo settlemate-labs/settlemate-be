@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: settlemate-be
+  datasource:
+    url: ${MYSQL_URL:jdbc:mysql://localhost:3306/settlemate}
+    username: ${MYSQL_USER:settlemate}
+    password: ${MYSQL_PASSWORD:settlemate}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  data:
+    redis:
+      url: ${REDIS_URL:redis://localhost:6379}
+  rabbitmq:
+    addresses: ${RABBITMQ_URL:amqp://guest:guest@localhost:5672}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics

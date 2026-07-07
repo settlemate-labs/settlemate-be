@@ -1,0 +1,37 @@
+openapi: 3.0.3
+info:
+  title: SettleMate API
+  version: 0.1.0
+paths:
+  /api/dashboard:
+    get:
+      summary: Read settlement dashboard
+      responses:
+        "200":
+          description: Dashboard snapshot
+  /api/settlements:
+    post:
+      summary: Reconcile merchant settlement
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SettlementRequest"
+      responses:
+        "200":
+          description: Settlement result
+components:
+  schemas:
+    SettlementRequest:
+      type: object
+      required: [merchantId, grossAmount, refundAmount]
+      properties:
+        merchantId:
+          type: string
+        grossAmount:
+          type: integer
+          minimum: 1
+        refundAmount:
+          type: integer
+          minimum: 0

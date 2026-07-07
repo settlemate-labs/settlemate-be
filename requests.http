@@ -1,0 +1,11 @@
+GET http://localhost:8080/api/dashboard
+
+###
+POST http://localhost:8080/api/settlements
+Content-Type: application/json
+
+{
+  "merchantId": "merchant-mapo",
+  "grossAmount": 10000,
+  "refundAmount": 3000
+}
